@@ -1,0 +1,19 @@
+"""
+Security Headers Analysis (observación pasiva)
+
+- Herramienta recomendada: securityheaders.com (ejecutar scan público).
+- Observaciones basadas en revisión pasiva y uso de Cloudflare:
+  - Probable ausencia o configuración parcial de Content-Security-Policy (CSP) efectiva.
+  - Recomendación de X-Frame-Options: SAMEORIGIN para prevenir clickjacking.
+  - Recomendación de X-Content-Type-Options: nosniff.
+  - Recomendación de Referrer-Policy: same-origin o strict-origin-when-cross-origin.
+  - HSTS: configurar Strict-Transport-Security con max-age >= 31536000 y includeSubDomains si aplicable.
+  - Feature-Policy / Permissions-Policy: limitar APIs de navegador a lo necesario.
+
+Acción inmediata:
+1. Ejecutar securityheaders.com sobre https://crehana.com y exportar el resultado.
+2. Implementar cabeceras faltantes en CDN (Cloudflare) o en origen si aplica.
+3. Validar en entornos staging antes de producción.
+
+Nota: Esto es una recomendación inicial basada en buenas prácticas y observación pasiva.
+"""
